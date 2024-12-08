@@ -6,7 +6,7 @@ function Split() {
       <button>back</button>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <label htmlFor="merchant">Let me Know what you buy!</label>
-        <input id="merchant" placeholder="Gacoan" />
+        <input id="merchant" placeholder="Mixue" />
       </div>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <label htmlFor="merchant">Let me Know what you buy!</label>
