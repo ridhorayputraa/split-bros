@@ -1,10 +1,10 @@
 import React from "react";
 
-function Main() {
+function MainNadia() {
   return (
     <>
       <div>
-        <p>Hello, Ray</p>
+        <p>Hello, nadia</p>
         <h3>Split your bill with Bros</h3>
       </div>
       <div style={{ backgroundColor: "black", padding: "1rem", width: "68px" }}>
@@ -16,4 +16,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default MainNadia;

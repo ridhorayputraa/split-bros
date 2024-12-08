@@ -4,14 +4,14 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Split from "./page/Split";
 import SplashScreen from "./page/SplashScreen";
-import Main from "./page/Main";
+import MainNadia from "./page/MainNadia";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <Main />
+      <MainNadia />
     </>
   );
 }
