@@ -1,60 +1,40 @@
 import React from "react";
+import splashScreenImage from "../../public/splash-screen-image.png";
+import Layout from "../component/Layout";
+import { Button, Input } from "@material-tailwind/react";
+import { Link } from "react-router";
+import GeminiIntegration from "../component/GeminiBill";
+import GeminiBill from "../component/GeminiBill";
 
 function Split() {
   return (
-    <>
-      <button>back</button>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <label htmlFor="merchant">Let me Know what you buy!</label>
-        <input 
-          readOnly
-          style={{ height: "25px" }}
-          id="merchant"/>
+    <Layout>
+      <div className="container">
+        <div className="split-wrapper h-full flex flex-col gap-4">
+          <div className="split-top">
+            <div className="cta">
+              <Link to="/dashboard">
+                <Button color="red" type="submit">
+                  Back
+                </Button>
+              </Link>
+            </div>
+          </div>
+          <div className="split-form-wrappper flex flex-col gap-6">
+            {/* <div className="subject-form">
+              <Input
+                type="file"
+                color="blue"
+                variant="standard"
+                label="Input your bill here"
+                placeholder="Input your bill here"
+              />
+            </div> */}
+            <GeminiBill  />
+          </div>
+        </div>
       </div>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <label htmlFor="merchant">How Many Bros </label>
-        <input
-          readOnly
-          style={{ height: "25px" }}
-          id="merchant" />
-      </div>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <label htmlFor="merchant">Bill your bros 1 </label>
-        <input
-          readOnly
-          style={{ height: "25px" }}
-          id="merchant" />
-      </div>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <label htmlFor="merchant">Bill your bros 2 </label>
-        <input
-          readOnly
-          style={{ height: "25px" }}
-          id="merchant" />
-      </div>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <label htmlFor="merchant">Bill your bros 3 </label>
-        <input
-          readOnly
-          style={{ height: "25px" }}
-          id="merchant" />
-      </div>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <label htmlFor="merchant">Bill your bros 4 </label>
-        <input
-          readOnly
-          style={{ height: "25px" }}
-          id="merchant" />
-      </div>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <label htmlFor="merchant">Total bill </label>
-        <input
-          readOnly
-          style={{ height: "128px" }}
-          id="merchant" />
-      </div>
-    <button>Submit</button>
-    </>
+    </Layout>
   );
 }
 

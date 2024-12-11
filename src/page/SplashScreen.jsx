@@ -1,23 +1,35 @@
 import React from "react";
-import gambarRumah from "../../public/gambar-rumah.png";
+import splashScreenImage from "../../public/splash-screen-image.png";
+import Layout from "../component/Layout";
+import { Button, Input } from "@material-tailwind/react";
+import { Link } from "react-router";
 
 function SplashScreen() {
   return (
-    <>
-      <div>
-        <h3 style={{fontSize: "15px", fontWeight: "400"}}>Welcome To</h3>
-        <h1 style={{fontSize: "25px"}}>SplitBros</h1>
+    <Layout>
+      <div className="container">
+        <div className="splash-screen-wrapper h-full flex flex-col justify-center items-center text-center gap-12">
+          <div className="spw-top flex flex-col gap-3">
+            <div className="subject-wrapper">
+              <div className="subject-desc">
+                <p className="text-lg">Welcome To</p>
+              </div>
+              <div className="subject-desc">
+                <h1 className="text-5xl">SplitBros</h1>
+              </div>
+            </div>
+            <div className="image">
+              <img src={splashScreenImage} alt="Split bros Assets" />
+            </div>
+          </div>
+          <div className="cta">
+            <Link to="/dashboard">
+              <Button color="green">Let's go</Button>
+            </Link>
+          </div>
+        </div>
       </div>
-      <div style={{marginTop: "20px"}}>SplashScreen</div>
-      <img src={gambarRumah} alt="" />
-
-      <div style={{ display: "flex", flexDirection: "column", width: "500px" }}>
-        <label htmlFor="merchant">Let me Know your name</label>
-        <input id="merchant"/>
-      </div>
-      <button style={{ marginTop: "16px", width: "500px", color: "black", backgroundColor: "green" }}>Submit</button>
-      
-    </>
+    </Layout>
   );
 }
 
