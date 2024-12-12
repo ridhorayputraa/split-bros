@@ -24,7 +24,7 @@ const GeminiBill = () => {
   const navigate = useNavigate();
 
   const API_KEY = import.meta.env.VITE_SOME_KEY;
-  console.log(API_KEY, "API KEY");
+
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
