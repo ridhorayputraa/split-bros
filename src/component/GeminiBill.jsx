@@ -18,13 +18,12 @@ const GeminiBill = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
-  const [brosCount, setBrosCount] = useState(""); // Added state for number of bros
-  const [merchantName, setMerchantName] = useState(""); // Added state for merchant name
+  const [brosCount, setBrosCount] = useState("");
+  const [merchantName, setMerchantName] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const API_KEY = process.env.REACT_APP_API_KEY;
-  console.log("API Key from .env:", process.env.REACT_APP_API_KEY);
+  const API_KEY = import.meta.env.VITE_SOME_KEY;
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -51,6 +50,8 @@ const GeminiBill = () => {
       });
 
       // Create Gemini API content
+
+      // Create Gemini API content
       const contents = [
         {
           role: "user",
@@ -58,14 +59,34 @@ const GeminiBill = () => {
             { inline_data: { mime_type: "image/jpeg", data: imageBase64 } },
             {
               text: `Extract the menu items and their prices from this bill image. 
-                     For each item, list them individually, even if the quantity is greater than 1. 
-                     Do not multiply the price. Provide only the name of the menu and its price for each occurrence, one item per line. 
-                     At the end of the list, calculate and include the total price. Format: "Total - [calculated total price]". 
-                     Do not include any introductory text or additional comments.`,
+                       For each item, list them individually, even if the quantity is greater than 1. 
+                       Do not multiply the price. Provide only the name of the menu and its price for each occurrence, one item per line. 
+                       At the end of the list, calculate and include the total price. Format: "Total - [calculated total price]". 
+                       Do not include any introductory text or additional comments.`,
             },
           ],
         },
       ];
+
+      // const contents = [
+      //   {
+      //     role: "user",
+      //     parts: [
+      //       { inline_data: { mime_type: "image/jpeg", data: imageBase64 } },
+      //       {
+      //         text: `Extract the menu items and their prices from this bill image.
+      //                For each item, list them individually, even if the quantity is greater than 1.
+      //                Do not multiply the price. Provide only the name of the menu and its price for each occurrence, one item per line.
+      //                At the end of the list, calculate the total price and evenly distribute a 10% tax across all items.
+      //                For each item, include its name, original price, tax amount, and new price (original price + tax).
+      //                Finally, provide the total price (including tax). Format:
+      //                - "[Menu Item Name]: [Original Price], Tax: [Tax Amount], New Price: [New Price]"
+      //                - "Total (with tax): [Calculated Total Price]"
+      //                Do not include any introductory text or additional comments.`,
+      //       },
+      //     ],
+      //   },
+      // ];
 
       const genAI = new GoogleGenerativeAI(API_KEY);
       const model = genAI.getGenerativeModel({
@@ -117,7 +138,6 @@ const GeminiBill = () => {
 
       dispatch(setTotalExpense(totalPrice));
       setMenus(menuItems);
-      console.log("Total Price (from AI):", totalPrice);
     } catch (e) {
       setError("Failed to process the bill. Please try again.");
     } finally {
@@ -142,22 +162,11 @@ const GeminiBill = () => {
     }));
     localStorage.setItem("billData", JSON.stringify(dataToStore));
 
-    // Cek nilai yang akan dikirim ke Redux
-    console.log("Submitting Expense: ", {
-      amount: totalPrice, // Total harga yang dihitung
-      historyItem: {
-        name: merchantName || "Gacoran 88", // Use merchantName if provided, else fallback to default
-        date: now.format("DD, MMMM, YYYY"),
-        amount: totalPrice,
-        people: brosCount, // Jumlah orang yang memesan
-      },
-    });
-
     dispatch(
       addExpense({
         amount: totalPrice,
         historyItem: {
-          name: merchantName || "Gacoran 88", // Use merchantName if provided, else fallback to default
+          name: merchantName || "Merchant",
           date: now.format("DD, MMMM, YYYY"),
           amount: totalPrice,
           people: brosCount,

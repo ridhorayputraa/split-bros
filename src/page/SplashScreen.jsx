@@ -7,7 +7,7 @@ import { Link } from "react-router";
 function SplashScreen() {
   return (
     <Layout>
-      <div className="container">
+      <div className="container py-6">
         <div className="splash-screen-wrapper h-full flex flex-col justify-center items-center text-center gap-12">
           <div className="spw-top flex flex-col gap-3">
             <div className="subject-wrapper">
@@ -22,9 +22,11 @@ function SplashScreen() {
               <img src={splashScreenImage} alt="Split bros Assets" />
             </div>
           </div>
-          <div className="cta">
-            <Link to="/dashboard">
-              <Button color="green">Let's go</Button>
+          <div className="cta w-full">
+            <Link className="w-full" to="/dashboard">
+              <Button fullWidth color="green">
+                Let's go
+              </Button>
             </Link>
           </div>
         </div>

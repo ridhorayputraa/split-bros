@@ -7,14 +7,13 @@ import { useSelector } from "react-redux";
 
 function Dashboard() {
   const { expenses, history } = useSelector((state) => state.bill);
-  console.log(history);
   return (
     <Layout>
       <div className="container">
         <div className="dashboard-wrapper h-full flex flex-col gap-4">
           <div className="dw-top">
             <div className="dw-top-title">
-              <p>Hello, Ray</p>
+              <p>Hello, Bros!</p>
             </div>
             <div className="dw-top-title">
               <h6 className="text-xl">Split your bill with bros</h6>

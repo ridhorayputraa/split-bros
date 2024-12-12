@@ -10,7 +10,7 @@ function Split() {
   return (
     <Layout>
       <div className="container">
-        <div className="split-wrapper h-full flex flex-col gap-4">
+        <div className="split-wrapper h-full flex flex-col gap-12">
           <div className="split-top">
             <div className="cta">
               <Link to="/dashboard">
@@ -30,7 +30,7 @@ function Split() {
                 placeholder="Input your bill here"
               />
             </div> */}
-            <GeminiBill  />
+            <GeminiBill />
           </div>
         </div>
       </div>
